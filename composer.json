@@ -1,0 +1,49 @@
+{
+    "name": "lamungu/laravel-sync-broadcaster",
+    "description": "Laravel IDE Helper, generates correct PHPDocs for all Facade classes, to improve auto-completion.",
+    "keywords": ["laravel", "twilio", "sync", "websocket", "broadcasting", "echo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Lofo",
+            "email": "benjamin.lofo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "illuminate/support": "^5.5,<5.8",
+        "illuminate/broadcasting": "^5.5,<5.8",
+        "twilio/sdk": "^5.16"
+    },
+    "require-dev": {
+        "illuminate/http": "^5.1,<5.8",
+        "illuminate/config": "^5.1,<5.8",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lamungu\\LaravelSyncBroadcaster\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lamungu\\LaravelSyncBroadcaster\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.5-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Lamungu\\LaravelSyncBroadcaster\\SyncBroadcastServiceProvider"
+            ]
+        }
+    }
+}
