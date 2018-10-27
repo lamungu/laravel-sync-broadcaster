@@ -13,6 +13,8 @@ use Twilio\Rest\Sync\V1\ServiceContext;
 
 class SyncBroadcaster extends Broadcaster
 {
+    const TWILIO_EXCEPTION_NOT_FOUND = 20404;
+
     /**
      * The Sync instance.
      *
@@ -96,6 +98,12 @@ class SyncBroadcaster extends Broadcaster
                     continue;
                 }
             } catch (TwilioException $e) {
+                if ($e->getCode() === self::TWILIO_EXCEPTION_NOT_FOUND) {
+                    // We will suppose, in this case, that the stream has not been created
+                    // and that as such, no one is listening to messages published on such.
+                    // It then serves no purpose to follow up on these messages
+                    continue;
+                }
                 throw new BroadcastException('Failed to broadcast to Sync: ' . $e->getMessage());
             }
         }

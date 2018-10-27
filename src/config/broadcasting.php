@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'connection' => [
+    'connections' => [
         'sync' => [
             'driver' => 'sync',
             'accountSid' => env('TWILIO_ACCOUNT_SID'),
